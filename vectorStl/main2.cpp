@@ -2,32 +2,30 @@
 #include <vector>
 #include <algorithm>
 
-std::vector<int> vec {1, 2, 4, 5, 6};
+std::vector<int> vec;
 auto print = [](const int& n) {std::cout << n << ' ';};
 
 int main ()
 {
-    std::for_each(vec.cbegin(), vec.cend(), print);
-    std::cout << '\n';
-
-    vec.erase(vec.begin());
-    std::for_each(vec.cbegin(), vec.cend(), print);
-    std::cout << '\n';
-
-    vec.push_back(5);
-    std::for_each(vec.cbegin(), vec.cend(), print);
-    std::cout << '\n';
-
-    vec.emplace(vec.begin(), 12);
-    std::for_each(vec.cbegin(), vec.cend(), print);
-    std::cout << '\n';
-
     std::cout << "Vector size: " << vec.size() << " Vector capacity: " << vec.capacity() << '\n';
-    vec.clear();
+    std::for_each(vec.cbegin(), vec.cend(), print);
+    std::cout << '\n';
     
-    std::for_each(vec.cbegin(), vec.cend(), print);
-    std::cout << '\n';    
+    vec.reserve(10);
+    vec.insert(vec.begin(), 10, 5);
     std::cout << "Vector size: " << vec.size() << " Vector capacity: " << vec.capacity() << '\n';
+    std::for_each(vec.cbegin(), vec.cend(), print);
+    std::cout << '\n';
+
+    vec.reserve(20);
+    std::cout << "Vector size: " << vec.size() << " Vector capacity: " << vec.capacity() << '\n';
+    std::for_each(vec.cbegin(), vec.cend(), print);
+    std::cout << '\n';
+
+    vec.shrink_to_fit();
+    std::cout << "Vector size: " << vec.size() << " Vector capacity: " << vec.capacity() << '\n';
+    std::for_each(vec.cbegin(), vec.cend(), print);
+    std::cout << '\n';
 
     return 0;
 }
