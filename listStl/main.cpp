@@ -39,7 +39,7 @@ int main ()
         std::cout << arrEl << " ";
     }
     std::cout << '\n';
-    std::cout << arr[0] << " " << arr.at(7) << '\n'; 
+    std::cout << arr[0] << " " << arr.at(7) << '\n';
 
     return 0;
 }
