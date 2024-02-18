@@ -23,19 +23,22 @@ int main ()
 {
     std::vector<int> v1(1000);
     std::iota(v1.begin(), v1.end(), 1);
-    auto sum = std::reduce(v1.begin(), v1.end(), 0, std::plus<int>());
+    auto sum = std::reduce(v1.begin(), v1.end(), 0);
     std::cout << "sum = " << sum;
+    std::cout << std::endl;
 
     std::vector<int> v2;
     generateSequence(v2);
+
+    auto iloczynSkalarny = std::inner_product(v1.begin(), v1.end(), v2.begin(), 0);
+    std::cout << "iloczyn skalarny = " << iloczynSkalarny;
     std::cout << std::endl;
 
-    std::cout << v2.size();
-    std::cout << std::endl;
-
-    for (const auto el : v2) {
-        std::cout << el << " ";
-    }
+    auto sumaZJedunek = std::transform_reduce(v1.begin(), v1.end(), v2.begin(), 0, std::plus{},
+                                                [](auto const& a, auto const& b) {
+                                                    return b == 1 ? a : 0;
+                                                });
+    std::cout << "Suma z jedynek = " << sumaZJedunek;
     std::cout << std::endl;
     return 0;
 }
