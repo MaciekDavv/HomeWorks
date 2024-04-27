@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/university-student.dir/src/main.cpp.o -o university-student 
