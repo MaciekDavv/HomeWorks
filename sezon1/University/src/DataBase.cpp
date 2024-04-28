@@ -1,4 +1,5 @@
 #include "DataBase.hpp"
+#include <iostream>
 
 bool DataBase::add(const Student& s) {
     if ( isAdded_ ) {
@@ -7,4 +8,12 @@ bool DataBase::add(const Student& s) {
         isAdded_ = true;
         return true;
     }
+}
+
+void DataBase::display() const {
+    std::cout << show();
+}
+
+std::string DataBase::show() const {
+    return "";
 }
