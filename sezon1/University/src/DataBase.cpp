@@ -1,13 +1,8 @@
 #include "DataBase.hpp"
 #include <iostream>
 
-bool DataBase::add(const Student& s) {
-    if ( isAdded_ ) {
-        return false;
-    } else {
-        isAdded_ = true;
-        return true;
-    }
+void DataBase::add(const Student& s) {
+    students_.push_back(s);
 }
 
 void DataBase::display() const {
@@ -15,5 +10,9 @@ void DataBase::display() const {
 }
 
 std::string DataBase::show() const {
-    return "";
+    std::string result = "";
+    for (auto && student : students_) {
+        result += student.show();
+    }
+    return result;
 }
