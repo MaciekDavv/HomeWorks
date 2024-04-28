@@ -14,7 +14,8 @@ Student::Student(std::string name,
     , gender_(gender)
 {}
 
-std::string Student::show() const {
+std::string Student::show() const
+{
     return name_ + " "
          + lastName_ + "; "
          + address_ + "; "
