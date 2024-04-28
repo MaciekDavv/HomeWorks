@@ -1,0 +1,10 @@
+#include "DataBase.hpp"
+
+bool DataBase::add(const Student& s) {
+    if ( isAdded_ ) {
+        return false;
+    } else {
+        isAdded_ = true;
+        return true;
+    }
+}

@@ -1,6 +1,7 @@
-#include <iostream>
+#include "DataBase.hpp"
+#include "Student.hpp"
 
 int main() {
-    std::cout << "Hello";
+    DataBase db;
     return 0;
 }
