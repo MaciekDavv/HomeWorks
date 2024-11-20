@@ -12,7 +12,7 @@
 #include <set>
 #include <iostream>
 
-auto print = [](const auto& el){ std::cout << el << ", "; };
+auto print = [](const auto& el){ std::cout << el << " "; };
 
 int main()
 {
@@ -43,10 +43,6 @@ int main()
     std::cout << "\n";
 
     std::iota(vec.begin(), vec.end(), 0);
-    std::for_each(vec.begin(), vec.end(), print);
-    std::cout << "\n";
-    std::cout << "\n";
-
     std::multiset<int> mset = {vec.begin(), vec.end()};
     std::for_each(mset.begin(), mset.end(), print);
     std::cout << "\n";
@@ -58,12 +54,26 @@ int main()
     mset.insert(10);
     mset.insert(100);
     mset.insert(-100);
-    
+
     std::for_each(mset.begin(), mset.end(), print);
     std::cout << "\n";
     std::cout << mset.size() << "\n";
-    std::cout << "\n";    
+    std::cout << "\n";
 
+    mset.merge(set);
+
+    std::for_each(mset.begin(), mset.end(), print);
+    std::cout << "\n";
+    std::cout << mset.size() << "\n";
+    std::cout << "\n";
+
+    auto it = mset.find(0);
+    auto it2 = mset.find(50);
+
+    std::for_each(mset.begin(), mset.end(), [it, it2](const auto& el){ if (*it == el || *it2 == el) {
+        std::cout << el << " ";
+    }});
+    std::cout << "\n";
 
     return 0;
 }
