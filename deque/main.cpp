@@ -10,7 +10,8 @@ void print(std::deque<int>& deq) {
 
 int main ()
 {
-    std::deque<int> deq{11, 22, 33, 44, 55};
+    std::deque<int> deq;
+    deq = {11, 22, 33, 44, 55};
     print(deq);
 
     auto it =  deq.begin();
