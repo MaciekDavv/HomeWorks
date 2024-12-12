@@ -1,3 +1,0 @@
-/home/maciek/myrepo/HomeWorks/sezon1/University/build/CMakeFiles/university-student.dir
-/home/maciek/myrepo/HomeWorks/sezon1/University/build/CMakeFiles/edit_cache.dir
-/home/maciek/myrepo/HomeWorks/sezon1/University/build/CMakeFiles/rebuild_cache.dir
