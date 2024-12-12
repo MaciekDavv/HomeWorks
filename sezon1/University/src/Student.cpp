@@ -14,12 +14,21 @@ Student::Student(std::string name,
     , gender_(gender)
 {}
 
-std::string Student::show() const
+std::string Student::show () const
 {
     return name_ + " "
          + lastName_ + "; "
          + address_ + "; "
          + std::to_string(idexNumber_) + "; "
          + pesel_ + "; "
-         + "Male";
+         + maleOrFemale(gender_)
+         + "\n";
+}
+
+std::string Student::maleOrFemale(Gender gen) const {
+    if (gen == Gender::Male) {
+        return "Male";
+    } else {
+        return "Female";
+    }
 }

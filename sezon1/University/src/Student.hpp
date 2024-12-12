@@ -17,6 +17,7 @@ public:
             Gender gender);
 
     std::string show() const;
+    std::string maleOrFemale(Gender gen) const;
 private:
     std::string name_;
     std::string lastName_;

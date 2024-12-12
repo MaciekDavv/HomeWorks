@@ -1,7 +1,12 @@
 #include "DataBase.hpp"
 #include "Student.hpp"
 
+#include <memory>
+
 int main() {
-    DataBase db;
+    Student stu("Maciek", "Daaw", "Bochnia", 43567, "4562145778", Gender::Male);
+    DataBase base;
+    base.add(stu);
+    base.display();
     return 0;
 }
