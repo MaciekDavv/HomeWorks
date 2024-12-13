@@ -29,5 +29,8 @@ int main() {
     std::cout << "\n";
     base.sortByLastName();
     base.display();
+    std::cout << "\n";
+    base.deleteByIndexNumber(1294);
+    base.display();
     return 0;
 }

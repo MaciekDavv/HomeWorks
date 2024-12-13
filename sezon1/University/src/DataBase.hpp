@@ -13,6 +13,7 @@ public:
     void display() const;
     void sortByPesel();
     void sortByLastName();
+    void deleteByIndexNumber(const int& index);
     std::string show() const;
     School searchStudentByLastName(const std::string& lastName);
     School searchStudentByPesel(const std::string& lastName);

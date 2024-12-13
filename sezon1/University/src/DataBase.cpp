@@ -21,6 +21,17 @@ void DataBase::sortByLastName() {
     std::sort(students_.begin(), students_.end(), lastNameSort);
 }
 
+void DataBase::deleteByIndexNumber(const int& index) {
+    auto deleteByIdnex = [&index](const Student& a) { return a.getIndexNumber() == index; };
+    bool checkErase = (std::find_if(students_.begin(), students_.end(), deleteByIdnex) != students_.end());
+    if (students_.empty() || !checkErase) {
+        std::cout << "DataBase is not exist, or this index number is not exist!" << "\n";
+    } else {
+        students_.erase(std::remove_if(students_.begin(), students_.end(), deleteByIdnex), students_.end());
+    }
+
+}
+
 std::string DataBase::show() const {
     std::string result = "";
     for (auto && student : students_) {
