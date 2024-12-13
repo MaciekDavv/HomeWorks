@@ -11,6 +11,11 @@ void DataBase::display() const {
     std::cout << show();
 }
 
+void DataBase::sortByPesel() {
+    auto peselSort = [](const Student& a, const Student& b) { return a.getPesel() > b.getPesel(); };
+    std::sort(students_.begin(), students_.end(), peselSort);
+}
+
 std::string DataBase::show() const {
     std::string result = "";
     for (auto && student : students_) {

@@ -27,8 +27,7 @@ int main() {
     base.add(s10);
     base.display();
     std::cout << "\n";
-    base.displayStudent(base.searchStudentByPesel("85092111333"));
-    base.displayStudent(base.searchStudentByLastName("Kowalski"));
-    base.displayStudent(base.searchStudentByLastName("Ryba"));
+    base.sortByPesel();
+    base.display();
     return 0;
 }

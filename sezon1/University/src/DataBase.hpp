@@ -11,6 +11,7 @@ class DataBase {
 public:
     void add(const Student& s);
     void display() const;
+    void sortByPesel();
     std::string show() const;
     School searchStudentByLastName(const std::string& lastName);
     School searchStudentByPesel(const std::string& lastName);
