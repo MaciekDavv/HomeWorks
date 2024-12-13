@@ -18,6 +18,8 @@ public:
 
     std::string show() const;
     std::string maleOrFemale(Gender gen) const;
+    std::string getLastName() const { return lastName_; }
+    std::string getPesel() const {return pesel_; }
 private:
     std::string name_;
     std::string lastName_;

@@ -1,4 +1,6 @@
 #include "DataBase.hpp"
+
+#include <algorithm>
 #include <iostream>
 
 void DataBase::add(const Student& s) {
@@ -15,4 +17,16 @@ std::string DataBase::show() const {
         result += student.show();
     }
     return result;
+}
+
+School DataBase::searchStudentByLastName(const std::string& lastName) {
+    auto searchLastName = [&lastName](const Student& student) { return lastName == student.getLastName(); };
+    auto it = std::find_if(students_.cbegin(), students_.cend(), searchLastName);
+    return it;
+}
+
+School DataBase::searchStudentByPesel(const std::string& pesel) {
+    auto searchPesel = [&pesel](const Student& student) { return pesel == student.getPesel(); };
+    auto it = std::find_if(students_.cbegin(), students_.cend(), searchPesel);
+    return it;
 }
