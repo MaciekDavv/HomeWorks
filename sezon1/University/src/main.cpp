@@ -27,7 +27,7 @@ int main() {
     base.add(s10);
     base.display();
     std::cout << "\n";
-    base.sortByPesel();
+    base.sortByLastName();
     base.display();
     return 0;
 }

@@ -12,8 +12,13 @@ void DataBase::display() const {
 }
 
 void DataBase::sortByPesel() {
-    auto peselSort = [](const Student& a, const Student& b) { return a.getPesel() > b.getPesel(); };
+    auto peselSort = [](const Student& a, const Student& b) { return a.getPesel() < b.getPesel(); };
     std::sort(students_.begin(), students_.end(), peselSort);
+}
+
+void DataBase::sortByLastName() {
+    auto lastNameSort = [](const Student& a, const Student& b) { return a.getLastName() <= b.getLastName(); };
+    std::sort(students_.begin(), students_.end(), lastNameSort);
 }
 
 std::string DataBase::show() const {
