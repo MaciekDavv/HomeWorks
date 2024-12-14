@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <iostream>
 
-using School = std::vector<Student>::const_iterator;
+using studentVector = std::vector<Student>::const_iterator;
 
 class DataBase {
 public:
@@ -15,8 +15,8 @@ public:
     void sortByLastName();
     void deleteByIndexNumber(const int& index);
     std::string show() const;
-    School searchStudentByLastName(const std::string& lastName);
-    School searchStudentByPesel(const std::string& lastName);
+    studentVector searchStudentByLastName(const std::string& lastName);
+    studentVector searchStudentByPesel(const std::string& lastName);
 
     template <typename Func>
     void displayStudent(Func loking) {
