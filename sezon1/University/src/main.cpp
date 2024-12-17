@@ -16,8 +16,8 @@ int main() {
     // Student s8("Jola", "Banas", "Warszawa 700", 12094, "92031581094", Gender::Female);
     // Student s9("Ada", "Piernik", "Amsterdam 34", 89012, "05062481239", Gender::Female);
     // Student s10("Henryk", "Trus", "Gdansk 563", 24960, "89120390123", Gender::Male);
-    std::shared_ptr<School> student = std::make_shared<Student>("Mateusz", "Rydz", "Krakow 43", "90012345666", Gender::Male, 65890);
-    std::shared_ptr<School> teacher = std::make_shared<Teacher>("Pawel", "Wiecek", "Nowy Sacz 321", "55122444702", Gender::Male, "Fizyka", "4,500");
+    auto student = std::make_shared<Student>("Mateusz", "Rydz", "Krakow 43", "90012345666", Gender::Male, 65890);
+    auto teacher = std::make_shared<Teacher>("Pawel", "Wiecek", "Nowy Sacz 321", "55122444702", Gender::Male, 4500);
     DataBase base;
     base.add(student);
     base.add(teacher);
@@ -25,7 +25,10 @@ int main() {
     std::cout << "\n";
     base.display();
     std::cout << "\n";
-    base.displayStudent(base.searchStudentByLastName("Bobek"));
+    base.modyfiSelary("55122444702", 5'660);
+    std::cout << "\n";
+    base.display();
+
 
     return 0;
 }

@@ -10,15 +10,15 @@ public :
           , const std::string& address
           , const std::string& pesel
           , Gender gender
-          , const std::string& teacher
-          , const std::string& paycheck);
+          , const int& paycheck);
 
     ~Teacher() = default;
 
     std::string show() const override;
     std::string getLastName() const override { return lastName_; }
     std::string getPesel() const override { return pesel_; }
+    int getPayCheck() const { return paycheck_; }
+    void setPayCheck(const int& set) { paycheck_ = set; }
 private :
-    std::string teacher_;
-    std::string paycheck_;
+    int paycheck_;
 };

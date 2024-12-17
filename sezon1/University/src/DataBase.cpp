@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <iostream>
 
-void DataBase::add(std::shared_ptr<School> person) {
+void DataBase::add(Person person) {
     dataBase_.push_back(person);
 }
 
@@ -39,6 +39,29 @@ void DataBase::deleteByIndexNumber(const int& index) {
     }
 }
 
+void DataBase::modyfiSelary(const std::string& pesel, const int& payment) {
+    auto teacherIt = searchPersonByPesel(pesel);
+    if (teacherIt != dataBase_.end()) {
+        if (auto teacher = std::dynamic_pointer_cast<Teacher>(*teacherIt)) {
+            teacher->setPayCheck(payment);
+            std::cout << "Update selary: " << teacher->show() << "\n";
+        } else {
+            std::cout << "Teacher with Pesel: " << pesel << " Not found!" << "\n";
+        }
+    }
+    // auto teacher = [&payment](const Person& person) {
+    //     if (auto t = dynamic_cast<Teacher*>(person.get())) {
+    //         t->setPayCheck(payment);
+    //         std::cout << "Update selary: " << t->show() << "\n";
+    //     }
+    // };
+    // if (teacherIt != dataBase_.end()) {
+    //     teacher(*teacherIt); 
+    // } else {
+    //     std::cout << "Teacher with Pesel: " << pesel << " Not found!" << "\n";
+    // }
+}
+
 std::string DataBase::show() const {
     std::string result = "";
     for (auto && person : dataBase_) {
@@ -47,13 +70,13 @@ std::string DataBase::show() const {
     return result;
 }
 
-PersonIterator DataBase::searchStudentByLastName(const std::string& lastName) {
+PersonIterator DataBase::searchPersonByLastName(const std::string& lastName) {
     auto searchLastName = [&lastName](const Person& person) { return lastName == person->getLastName(); };
     auto it = std::find_if(dataBase_.cbegin(), dataBase_.cend(), searchLastName);
     return it;
 }
 
-PersonIterator DataBase::searchStudentByPesel(const std::string& pesel) {
+PersonIterator DataBase::searchPersonByPesel(const std::string& pesel) {
     auto searchPesel = [&pesel](const Person& person) { return pesel == person->getPesel(); };
     auto it = std::find_if(dataBase_.cbegin(), dataBase_.cend(), searchPesel);
     return it;

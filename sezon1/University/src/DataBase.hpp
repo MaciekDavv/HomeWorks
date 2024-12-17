@@ -1,12 +1,13 @@
 #pragma once
 
 #include "Student.hpp"
+#include "Teacher.hpp"
 #include <vector>
 #include <algorithm>
 #include <iostream>
 
-using PersonIterator = std::vector<std::shared_ptr<School>>::const_iterator;
 using Person = std::shared_ptr<School>;
+using PersonIterator = std::vector<Person>::const_iterator;
 
 class DataBase {
 public:
@@ -15,9 +16,11 @@ public:
     void sortByPesel();
     void sortByLastName();
     void deleteByIndexNumber(const int& index);
+    void modyfiSelary(const std::string& pesel, const int& payment);
     std::string show() const;
-    PersonIterator searchStudentByLastName(const std::string& lastName);
-    PersonIterator searchStudentByPesel(const std::string& lastName);
+    PersonIterator searchPersonByLastName(const std::string& lastName);
+    PersonIterator searchPersonByPesel(const std::string& lastName);
+
 
     template <typename Func>
     void displayStudent(Func loking) {

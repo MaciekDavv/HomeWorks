@@ -5,10 +5,8 @@ Teacher::Teacher(const std::string& name
                , const std::string& address
                , const std::string& pesel
                , Gender gender
-               , const std::string& teacher
-               , const std::string& paycheck)
+               , const int& paycheck)
     : School(name, lastName, address, pesel, gender)
-    , teacher_(teacher)
     , paycheck_(paycheck)
 {}
 
@@ -18,7 +16,6 @@ std::string Teacher::show() const {
          + address_ + "; "
          + pesel_ + "; "
          + maleOrFemale(gender_) + "; "
-         + teacher_ + "; "
-         + paycheck_ + "; "
+         + std::to_string(paycheck_) + "; "
          + "\n";
 }
