@@ -3,22 +3,22 @@
 #include "School.hpp"
 #include <string>
 
-class Student : public School {
-public:
-    Student(const std::string& name
-          , const std::string& lastName
+class Teacher : public School {
+public :
+    Teacher(const std::string& name
+          , const std::string& LastName
           , const std::string& address
           , const std::string& pesel
           , Gender gender
-          , int idexNumber);
+          , const std::string& teacher
+          , const std::string& paycheck);
 
-    ~Student() = default;
+    ~Teacher() = default;
 
     std::string show() const override;
     std::string getLastName() const override { return lastName_; }
     std::string getPesel() const override { return pesel_; }
-    int getIndexNumber() const { return indexNumber_; }
-
-private:
-    int indexNumber_;
+private :
+    std::string teacher_;
+    std::string paycheck_;
 };

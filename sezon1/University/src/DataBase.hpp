@@ -5,29 +5,30 @@
 #include <algorithm>
 #include <iostream>
 
-using studentVector = std::vector<Student>::const_iterator;
+using PersonIterator = std::vector<std::shared_ptr<School>>::const_iterator;
+using Person = std::shared_ptr<School>;
 
 class DataBase {
 public:
-    void add(const Student& s);
+    void add(std::shared_ptr<School> s);
     void display() const;
     void sortByPesel();
     void sortByLastName();
     void deleteByIndexNumber(const int& index);
     std::string show() const;
-    studentVector searchStudentByLastName(const std::string& lastName);
-    studentVector searchStudentByPesel(const std::string& lastName);
+    PersonIterator searchStudentByLastName(const std::string& lastName);
+    PersonIterator searchStudentByPesel(const std::string& lastName);
 
     template <typename Func>
     void displayStudent(Func loking) {
-        auto student = loking;
-        if (student != students_.end()) {
-            std::cout << student->show() << "\n";
+        auto person = loking;
+        if (person != dataBase_.end()) {
+            std::cout << (*person)->show() << "\n";
         } else {
             std::cout << "We don't hava a studet, wahat are you looking for" << "\n";
         }
     }
-    
+
 private:
-    std::vector<Student> students_;
+    std::vector<Person> dataBase_;
 };

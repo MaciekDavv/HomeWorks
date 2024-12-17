@@ -1,22 +1,24 @@
-#include "Student.hpp"
+#include "Teacher.hpp"
 
-Student::Student(const std::string& name
+Teacher::Teacher(const std::string& name
                , const std::string& lastName
                , const std::string& address
                , const std::string& pesel
                , Gender gender
-               , int indexNumber)
+               , const std::string& teacher
+               , const std::string& paycheck)
     : School(name, lastName, address, pesel, gender)
-    , indexNumber_(indexNumber)
+    , teacher_(teacher)
+    , paycheck_(paycheck)
 {}
 
-std::string Student::show () const
-{
-    return name_ + "; "
+std::string Teacher::show() const {
+        return name_ + "; "
          + lastName_ + "; "
          + address_ + "; "
          + pesel_ + "; "
          + maleOrFemale(gender_) + "; "
-         + std::to_string(indexNumber_) + "; "
+         + teacher_ + "; "
+         + paycheck_ + "; "
          + "\n";
 }

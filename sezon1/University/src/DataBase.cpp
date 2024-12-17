@@ -3,8 +3,8 @@
 #include <algorithm>
 #include <iostream>
 
-void DataBase::add(const Student& s) {
-    students_.push_back(s);
+void DataBase::add(std::shared_ptr<School> person) {
+    dataBase_.push_back(person);
 }
 
 void DataBase::display() const {
@@ -12,42 +12,49 @@ void DataBase::display() const {
 }
 
 void DataBase::sortByPesel() {
-    auto peselSort = [](const Student& a, const Student& b) { return a.getPesel() < b.getPesel(); };
-    std::sort(students_.begin(), students_.end(), peselSort);
+    auto peselSort = [](const Person& personFirst, const Person& personSecond) {
+        return personFirst->getPesel() < personSecond->getPesel();
+    };
+    std::sort(dataBase_.begin(), dataBase_.end(), peselSort);
 }
 
 void DataBase::sortByLastName() {
-    auto lastNameSort = [](const Student& a, const Student& b) { return a.getLastName() <= b.getLastName(); };
-    std::sort(students_.begin(), students_.end(), lastNameSort);
+    auto lastNameSort = [](const Person& personFirst, const Person& personSecond) {
+        return personFirst->getLastName() <= personSecond->getLastName();
+    };
+    std::sort(dataBase_.begin(), dataBase_.end(), lastNameSort);
 }
 
 void DataBase::deleteByIndexNumber(const int& index) {
-    auto deleteByIdnex = [&index](const Student& a) { return a.getIndexNumber() == index; };
-    bool checkErase = (std::find_if(students_.begin(), students_.end(), deleteByIdnex) != students_.end());
-    if (students_.empty() || !checkErase) {
+    auto deleteByIdnex = [&index](const Person& person) {
+        if (auto student = dynamic_cast<Student*>(person.get())) {
+            return student->getIndexNumber() == index;
+        } return false;
+    };
+    bool checkErase = (std::find_if(dataBase_.cbegin(), dataBase_.cend(), deleteByIdnex) != dataBase_.end());
+    if (dataBase_.empty() || !checkErase) {
         std::cout << "DataBase is not exist, or this index number is not exist!" << "\n";
     } else {
-        students_.erase(std::remove_if(students_.begin(), students_.end(), deleteByIdnex), students_.end());
+        dataBase_.erase(std::remove_if(dataBase_.begin(), dataBase_.end(), deleteByIdnex), dataBase_.end());
     }
-
 }
 
 std::string DataBase::show() const {
     std::string result = "";
-    for (auto && student : students_) {
-        result += student.show();
+    for (auto && person : dataBase_) {
+        result += person->show();
     }
     return result;
 }
 
-studentVector DataBase::searchStudentByLastName(const std::string& lastName) {
-    auto searchLastName = [&lastName](const Student& student) { return lastName == student.getLastName(); };
-    auto it = std::find_if(students_.cbegin(), students_.cend(), searchLastName);
+PersonIterator DataBase::searchStudentByLastName(const std::string& lastName) {
+    auto searchLastName = [&lastName](const Person& person) { return lastName == person->getLastName(); };
+    auto it = std::find_if(dataBase_.cbegin(), dataBase_.cend(), searchLastName);
     return it;
 }
 
-studentVector DataBase::searchStudentByPesel(const std::string& pesel) {
-    auto searchPesel = [&pesel](const Student& student) { return pesel == student.getPesel(); };
-    auto it = std::find_if(students_.cbegin(), students_.cend(), searchPesel);
+PersonIterator DataBase::searchStudentByPesel(const std::string& pesel) {
+    auto searchPesel = [&pesel](const Person& person) { return pesel == person->getPesel(); };
+    auto it = std::find_if(dataBase_.cbegin(), dataBase_.cend(), searchPesel);
     return it;
 }
