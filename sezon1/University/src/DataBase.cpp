@@ -25,6 +25,24 @@ void DataBase::sortByLastName() {
     std::sort(dataBase_.begin(), dataBase_.end(), lastNameSort);
 }
 
+void DataBase::sortBySelary() {
+    auto teacherOnEndConteiner = [](const Person& person) {
+        auto teacher = dynamic_cast<Teacher*>(person.get());
+        if (!teacher) {
+            return true;
+        } return false;
+    };
+    auto selarySort = [](const Person& firstPerson, const Person&secondPerson) {
+        auto teacherFirst = dynamic_cast<Teacher*>(firstPerson.get());
+        auto teacherSecond = dynamic_cast<Teacher*>(secondPerson.get());
+        if (teacherFirst && teacherSecond) {
+            return teacherFirst->getPayCheck() <= teacherSecond->getPayCheck();
+        } return false;
+    };
+    std::partition(dataBase_.begin(), dataBase_.end(), teacherOnEndConteiner);
+    std::sort(dataBase_.begin(), dataBase_.end(), selarySort);
+}
+
 void DataBase::deleteByIndexNumber(const int& index) {
     auto deleteByIdnex = [&index](const Person& person) {
         if (auto student = dynamic_cast<Student*>(person.get())) {

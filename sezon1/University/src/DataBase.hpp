@@ -11,10 +11,11 @@ using PersonIterator = std::vector<Person>::const_iterator;
 
 class DataBase {
 public:
-    void add(std::shared_ptr<School> s);
+    void add(Person person);
     void display() const;
     void sortByPesel();
     void sortByLastName();
+    void sortBySelary();
     void deleteByIndexNumber(const int& index);
     void modyfiSelary(const std::string& pesel, const int& payment);
     std::string show() const;
