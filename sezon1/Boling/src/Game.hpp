@@ -4,5 +4,8 @@
 class Game
 {
 public:
+    Game();
+    ~Game();
+    int getNumberFromUser();
 private:
 };

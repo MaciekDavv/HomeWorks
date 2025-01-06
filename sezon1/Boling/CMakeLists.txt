@@ -16,7 +16,7 @@ FetchContent_Declare(
     
     FetchContent_MakeAvailable(Catch2)
     
-add_executable(${PROJECT_NAME}-ut src/test.cpp src/Player.cpp)
+add_executable(${PROJECT_NAME}-ut src/test.cpp src/Player.cpp src/Game.cpp)
 target_link_libraries(${PROJECT_NAME}-ut PRIVATE Catch2::Catch2WithMain)
 target_compile_options(${PROJECT_NAME}-ut PRIVATE ${FLAGS})
 
