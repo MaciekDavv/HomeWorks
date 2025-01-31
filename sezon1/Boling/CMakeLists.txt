@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(FLAGS -Wall -Wextra -Wpedantic -Werror)
+set(FILES src/Component.cpp src/Game.cpp src/Logic.cpp src/Player.cpp)
 
 Include(FetchContent)
 
@@ -16,9 +17,9 @@ FetchContent_Declare(
     
     FetchContent_MakeAvailable(Catch2)
     
-add_executable(${PROJECT_NAME}-ut src/test.cpp src/Player.cpp src/Game.cpp)
+add_executable(${PROJECT_NAME}-ut src/test.cpp ${FILES})
 target_link_libraries(${PROJECT_NAME}-ut PRIVATE Catch2::Catch2WithMain)
 target_compile_options(${PROJECT_NAME}-ut PRIVATE ${FLAGS})
 
-add_executable(${PROJECT_NAME} src/main.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp ${FILES})
 target_compile_options(${PROJECT_NAME} PRIVATE ${FLAGS})

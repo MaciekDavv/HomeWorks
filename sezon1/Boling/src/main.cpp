@@ -1,10 +1,13 @@
-#include "Player.hpp"
+//#include "Player.hpp"
+#include "Game.hpp"
 
 #include <iostream>
 
 
 int main()
 {
-    std::cout << "Hello\n";
+    
+    // Game game;
+    // game.playGame();
     return 0;
 }

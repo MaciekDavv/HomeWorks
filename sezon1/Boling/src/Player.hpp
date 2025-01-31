@@ -1,35 +1,22 @@
 #pragma once
+#include "Component.hpp"
 
-#include <string>
-#include <memory>
-#include <algorithm>
-#include <vector>
-#include <iostream>
-
-class Ture
-{
-public:
-    Ture();
-    ~Ture();
-
-    void setPinsInBoowl(const int& pins);
-    std::vector<int> getBoowl() const;
-
-private:
-    std::vector<int> boowl_;
-};
-
-///////////////////////////////////////////////////////////////////////////
+//#include <string>
 
 class Player
 {
 public:
-    Player();
-    ~Player();
+    Player() {}
+    Player(const std::string& name);
+    ~Player() {}
 
-    std::vector<std::shared_ptr<Ture>> getRound() const { return round_; }
-    void addTureToRound(const std::shared_ptr<Ture>& ture);
+    Teable& getTeable()                         { return teable_; }
+    std::vector<int> getPointConteiner() const  { return pointCointeiner_; }
+    std::string getName() const                 {return name_; }
+    void setPointConteiner(const int& pins);
 
 private:
-    std::vector<std::shared_ptr<Ture>> round_;
+    std::string name_;
+    Teable teable_;
+    std::vector<int> pointCointeiner_;
 };
