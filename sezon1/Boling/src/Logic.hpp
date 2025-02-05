@@ -18,6 +18,8 @@ public:
     ~Logic() {}
 
     int score();
+    int bonusScoreStrike(const int& throwCount);
+    int bonusScoreSper(const int& throwCount);
     std::vector<int> getCountConteiner() const {return countConteiner_; }
     void conectConteiners(const std::vector<int>& pointConteiner);
 

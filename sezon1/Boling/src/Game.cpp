@@ -16,17 +16,17 @@ void Game::addBallToBoBothContenersStrike(std::shared_ptr<Player> player, const 
 }
 
 int Game::roll(){
-    std::cout << "push leter and enter to ROOL\n";
-    std::string forPush;
-    std::cin >> forPush;
-    return getBall().firstThrowBall();
+    std::cin.get();
+    auto first = getBall().firstThrowBall();
+    std::cout << "First:  " << first << "\n";
+    return first;
 }
 
 int Game::secondRoll(const int& firstThrow) {
-    std::cout << "push leter and enter to ROOL\n";
-    std::string forPush;
-    std::cin >> forPush;
-    return getBall().secondThrowBall(firstThrow);
+    std::cin.get();
+    auto second = getBall().secondThrowBall(firstThrow);
+    std::cout << "Second: " << second << "\n";
+    return second;
 }
 
 void Game::GamePlay() {

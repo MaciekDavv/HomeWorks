@@ -46,3 +46,15 @@ int Logic::score(){
     }
     return score;
 }
+
+int Logic::bonusScoreStrike(const int& throwCount) {
+    auto it = countConteiner_.begin();
+    std::advance(it, throwCount);
+    return 10 + *it + *std::next(it);
+}
+
+int Logic::bonusScoreSper(const int& throwCount) {
+    auto it = countConteiner_.begin();
+    std::advance(it, throwCount);
+    return *it;
+}
